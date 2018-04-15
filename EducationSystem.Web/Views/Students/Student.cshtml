@@ -1,0 +1,17 @@
+﻿@using EducationSystem.DataAccess.Models;
+@model List<CourseRecord>
+
+@{
+    ViewData["Title"] = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student</h2>
+
+@foreach(var s in Model)
+{
+    <li>@s.Student.StudentName - @s.Course.CourseCode</li>
+
+}
+
+

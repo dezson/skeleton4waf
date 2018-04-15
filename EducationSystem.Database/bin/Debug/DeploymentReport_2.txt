@@ -1,0 +1,31 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[course_record]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[course_record].[course_id] on table [dbo].[course_record] must be added, but the column has no default
+         value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue
+         you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of
+         smart-defaults as a deployment option.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[course_record] (Default Constraint)
+       unnamed constraint on [dbo].[course] (Check Constraint)
+     Table rebuild
+       [dbo].[course_record] (Table)
+     Create
+       [dbo].[fk_course_record_course] (Foreign Key)
+       Check Constraint: unnamed constraint on [dbo].[course] (Check Constraint)
+
+** Supporting actions
+     Drop
+       [dbo].[fk_course_record_student] (Foreign Key)
+     Create
+       [dbo].[fk_course_record_student] (Foreign Key)
+
+The column [dbo].[course_record].[course_id] on table [dbo].[course_record] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+
