@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace EducationSystem.Web
 {
@@ -19,9 +20,14 @@ namespace EducationSystem.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EducationSystemContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));     
+            services.AddTransient<EducationSystem.Web.Models.IAccountService, EducationSystem.Web.Models.AccountService>();
             services.AddMvc();
-            services.AddDbContext<EducationSystemContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
-            services.AddTransient<EducationSystem.Web.Models.IAccountService, EducationSystem.Web.Models.AccountService> ();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(15); // max. 15 percig él a munkamenet
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +44,7 @@ namespace EducationSystem.Web
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
