@@ -36,8 +36,8 @@ namespace EducationSystem.Web.Controllers
             }
 
             // ha sikeres volt az ellenőrzés
-            //HttpContext.Session.SetString("user", user.UserName); // felvesszük a felhasználó nevét a munkamenetbe 
-            TempData["username"] = user.UserName;
+            HttpContext.Session.SetString("user", user.UserName); // felvesszük a felhasználó nevét a munkamenetbe 
+            //TempData["username"] = user.UserName;
             return RedirectToAction("Index", "Home"); // átirányítjuk a főoldalra
         }
 
