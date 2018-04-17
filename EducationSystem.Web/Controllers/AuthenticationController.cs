@@ -2,6 +2,8 @@
 using EducationSystem.Web.Models;
 using EducationSystem.DataAccess.Models;
 using Microsoft.AspNetCore.Http;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EducationSystem.Web.Controllers
 {
@@ -37,7 +39,7 @@ namespace EducationSystem.Web.Controllers
 
             // ha sikeres volt az ellenőrzés
             HttpContext.Session.SetString("user", user.UserName); // felvesszük a felhasználó nevét a munkamenetbe 
-            //TempData["username"] = user.UserName;
+            TempData["done_sobject"] = (_context.CourseRecord.Where(w => w.IsCompleted).Where(x => x.Student.StudentName == user.UserName).Include(s => s.Student).Include(c => c.Course).ToList()).FirstOrDefault().CourseId;
             return RedirectToAction("Index", "Home"); // átirányítjuk a főoldalra
         }
 
@@ -68,5 +70,6 @@ namespace EducationSystem.Web.Controllers
 
             return RedirectToAction("Login");
         }
+
     }
 }

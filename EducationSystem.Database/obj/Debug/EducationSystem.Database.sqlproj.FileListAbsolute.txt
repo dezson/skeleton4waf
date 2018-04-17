@@ -1,9 +1,0 @@
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\bin\Debug\EducationSystem.Database.dacpac
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\bin\Debug\EducationSystem.Database.dll
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\bin\Debug\EducationSystem.Database.pdb
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\EducationSystem.Database.dll
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\EducationSystem.Database.pdb
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\Model.xml
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\refactor.xml
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\postdeploy.sql
-C:\Users\nd\source\waf_1_edu_sys\EducationSystem\EducationSystem.Database\obj\Debug\predeploy.sql

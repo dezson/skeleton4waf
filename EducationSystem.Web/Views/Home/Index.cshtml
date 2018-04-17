@@ -35,17 +35,16 @@
 }
 else
 {
-    <input id="search" name="customerName" type="Text"/>
+    <input id="search" name="customerName" type="Text" />
     <button type="button">Click Me!</button>
     @foreach (Course course in Model)
-{
-
-    <strong>name = </strong>@course.Subject.SubjectName<br />
-    <strong>coursecode = </strong>@course.CourseCode<br />
-    @*<strong>teacher = </strong>@course.Teacher.TeacherName<br />*@
-    <strong>start date = </strong>@course.StartTime<br />
-
-}
+    {
+        <strong>name = </strong>@course.Subject.SubjectName<br />
+        <strong>coursecode = </strong>@course.CourseCode<br />
+        @*<strong>teacher = </strong>@course.Teacher.TeacherName<br />*@
+        <strong>start date = </strong>@course.StartTime<br />
+    }
 }
     </div>
+    <h1>@TempData["done_sobject"]</h1>
 </div>
