@@ -104,9 +104,10 @@ namespace EducationSystem.Web.Models
             _context.Student.Add(new Student
             {
                 StudentName = guest.UserName,
-                Password = System.Text.Encoding.UTF8.GetString(passwordBytes),
+                //Password = System.Text.Encoding.UTF8.GetString(passwordBytes),
+                Password = guest.UserPassword,
             });
-    
+
             try
             {
                 _context.SaveChanges();
