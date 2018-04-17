@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using EducationSystem.DataAccess.Models
+<h2>Register</h2>
+
+
+@model RegistrationViewModel
+@* majd bekérjük/megjelenítjük a foglalás adatait *@
+<form asp-controller="Authentication" asp-action="Register">
+    @* Automatikus védelem XSRF támadás ellen *@
+
+    <table>
+        <tr>
+            <td width="150" colspan="2">
+                Student Name:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="StudentName" />
+                <span asp-validation-for="StudentName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" colspan="2">
+                Password:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="UserPassword" />
+                <span asp-validation-for="UserPassword"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" colspan="2">
+                Password again:
+            </td>
+            <td class="failureNotification">
+                <input asp-for="UserConfirmPassword" />
+                <span asp-validation-for="UserConfirmPassword"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" height="70">
+                <br />A felhasználónév és a jelszó minimum 5, maximum 40 karakter hosszú lehet. Csak betűt, számot és kötőjelet tartalmathat.<br /><br />
+                <input type="submit" value="Regisztráció" class="button" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts
+    {
+    @* jQuery Validation használata a kliens oldali validációra *@
+    @{ Html.RenderPartial("_ValidationScriptsPartial"); }
+}

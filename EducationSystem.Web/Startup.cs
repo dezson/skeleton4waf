@@ -21,6 +21,7 @@ namespace EducationSystem.Web
         {
             services.AddMvc();
             services.AddDbContext<EducationSystemContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection")));
+            services.AddTransient<EducationSystem.Web.Models.IAccountService, EducationSystem.Web.Models.AccountService> ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
