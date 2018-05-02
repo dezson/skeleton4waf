@@ -35,16 +35,34 @@
 }
 else
 {
-    <input id="search" name="customerName" type="Text" />
-    <button type="button">Click Me!</button>
+
+     <h1>VALAMI</h1>
+    <form asp-action="List" method="get">
+        <p>
+            <label for="teacherName">Teacher name:</label>
+            <input type="text" name="teacherName" value="@ViewData["teacherFilter"]" />
+
+            <label for="subjectName">Subject name:</label>
+            <input type="text" name="subjectName" value="@ViewData["subjecFilter"]" />
+
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </form>
+    <br>
     @foreach (Course course in Model)
-    {
-        <strong>name = </strong>@course.Subject.SubjectName<br />
-        <strong>coursecode = </strong>@course.CourseCode<br />
-        @*<strong>teacher = </strong>@course.Teacher.TeacherName<br />*@
-        <strong>start date = </strong>@course.StartTime<br />
-    }
+{
+    <strong>name = </strong>@course.Subject.SubjectName<br />
+    <strong>coursecode = </strong>@course.CourseCode<br />
+    <strong>teacher = </strong>@course.TeacherId<br />
+    <strong>start date = </strong>@course.StartTime<br />
+    <br>
+}
 }
     </div>
-    <h1>@TempData["done_sobject"]</h1>
+
+
+
+
+
+
 </div>

@@ -1,0 +1,29 @@
+﻿@using EducationSystem.DataAccess.Models;
+@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "CourseRegistration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CourseRegistration</h2>
+@if (Model == null || Model.Count() == 0)
+{
+    <h3>You don't have courses</h3>
+}
+else
+{
+    @foreach (Course course in Model)
+    {
+        <strong>name = </strong>@course.Subject.SubjectName
+        <a asp-action="AddCourse" asp-route-courseId="@course.CourseId"> Add</a><br />
+    }
+}
+
+<div>
+    <div asp-validation-summary="ModelOnly" class="failurenotification"></div>
+</div>
+
+@section Scripts
+    {
+    @{ Html.RenderPartial("_ValidationScriptsPartial");}
+}
