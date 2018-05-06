@@ -38,9 +38,13 @@ namespace EducationSystem.Web.Controllers
             }
 
             // ha sikeres volt az ellenőrzés
-            HttpContext.Session.SetString("user", user.UserName); // felvesszük a felhasználó nevét a munkamenetbe 
-            TempData["done_sobject"] = (_context.CourseRecord.Where(w => w.IsCompleted).Where(x => x.Student.StudentName == user.UserName).Include(s => s.Student).Include(c => c.Course).ToList()).FirstOrDefault().CourseId;
-            return RedirectToAction("Index", "Home"); // átirányítjuk a főoldalra
+     
+            HttpContext.Session.SetString("userName", user.UserName);
+
+            ViewBag.IsLoggedIn = true;
+            var subject_passed = (_context.CourseRecord.Where(w => w.IsCompleted).Where(x => x.Student.StudentName == user.UserName).Include(s => s.Student).Include(c => c.Course).ToList());
+            return RedirectToAction("Student", "Students",  subject_passed); // átirányítjuk a főoldalra
+            //return View("Index", user);
         }
 
 

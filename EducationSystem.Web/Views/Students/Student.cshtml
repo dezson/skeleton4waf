@@ -1,68 +1,17 @@
-﻿@using System.Collections.Generic;
-@using System.Linq;
-@using EducationSystem.DataAccess.Models;
-@model IEnumerable<CourseRecord>
+﻿@using EducationSystem.DataAccess.Models;
+@model List<CourseRecord>
 
 @{
-    ViewData["Title"] = "Student Page";
+    ViewData["Title"] = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<li><a asp-area="" asp-controller="Students" asp-action="CourseRegistrationAction">Add course</a></li>
+<h2>Student</h2>
 
-<div class="content">
-    <div class="rightColumn">
-        @if (Model == null || Model.Count() == 0)
-        {
-            <h3>You don't have courses</h3>
-        }
-        else
-        {
+@foreach(var s in Model)
+{
+    <li>@s.Student.StudentName - @s.Course.CourseCode</li>
 
-            <h1>All of your courses</h1>
-            <form asp-action="FilterList" method="get">
-                <p>
-                    <label for="teacherName">Teacher name:</label>
-                    <input type="text" name="teacherName" value="@ViewData["teacherFilter"]" />
-
-                    <label for="subjectName">Subject name:</label>
-                    <input type="text" name="subjectName" value="@ViewData["subjecFilter"]" />
-
-                    <label>Completed?</label>
-                    <input type="radio" name="iscompleted" value="true" />
-                    <input type="radio" name="iscompleted" value="false" />
-
-                    <input type="submit" value="Search" class="btn btn-default" />
-                </p>
-            </form>
-            <br>
-            @foreach (CourseRecord courseRecord in Model)
-            {
-                <strong>course name = </strong>@courseRecord.Course.Subject.SubjectName<br />
-                @*<strong>teacher name = </strong>@courseRecord.Course.Teacher.TeacherName<br />*@
-
-                @if (courseRecord.Grade > 1)
-                {
-                    <strong>course grade = </strong>@courseRecord.Grade
-                    <br />
-                }
-                else
-                {
-                    <strong>Not completed</strong>
-                    @*//asp - route - courseId a harmadik a paramter neve
-                        <a asp-action="TakeCourse" asp-route-courseId="@courseRecord.CourseRecordId"></a>*@
-
-                    <br />
-
-                }
-
-                <hr />
-            }
-        }
-    </div>
+}
 
 
-
-
-
-
-</div>
